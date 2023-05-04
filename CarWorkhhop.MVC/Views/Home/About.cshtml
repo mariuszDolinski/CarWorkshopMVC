@@ -1,0 +1,41 @@
+﻿@*najpierw dodajemy informacje o typie modelu jaki został przekazany w kontrolerze, Controloers/HomeControler*@
+@*Potem możemy odwołac się do tego modelu poprzez @Model (z dużej litery)*@
+@*Aby dodać link w menu do tego widoku przechodzimy do Shared/Layout.cshtml*@
+@*Na stronie bootswatch.com są darmowe motywy, tutaj użyty będzie Zephyr*@
+@*Aby zainstalować motyw trzeba pobrać pliki bootstrap.css i bootstrap.min.css a następnie podmienić je*@
+@* w folderze z projektem -> wwwroot->lib->bootstrap->dist->css*@
+@model About
+@{
+    int counter = 0;
+}
+
+<h1>@Model.Title</h1>
+@*korzystamy z klas bootstrapa, który jest domyślnie dodany do MVC, dokumentacja na https://getbootstrap.com*@
+<div class="alert alert-primary">@Model.Description</div>
+<p>Tags:
+    @foreach(var tag in Model.Tags)
+    {
+        counter++;
+        @tag @(counter < Model.Tags.Count ? ", " : "")
+    }
+</p>
+@*sm powoduje, że na małym ekranie kolumny będą wyświetlane w wierszach, to tzw. breakpoint*@
+@*breakpointy są opisane na https://getbootstrap.com w Docs->Layout->Grid*@
+<div class="container text-center">
+  <div class="row">
+    <div class="col-sm-4 border">
+      Column
+    </div>
+    <div class="col-sm-1 border">
+      Column
+    </div>
+    <div class="col-sm-1 border">
+      Column
+    </div>
+    <div class="col-sm-6 border">
+      Column
+    </div>
+  </div>
+</div>
+
+
